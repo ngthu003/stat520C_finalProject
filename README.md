@@ -4,7 +4,7 @@
 
 Date: 04/28/2023
 
-This project focuses on the different ways fitted models can be evaluated and compared under the Bayesian framework. The reference text is Bayesian Data Analysis by Gelman et al.
+This project focuses on the different ways fitted models can be evaluated and compared under the Bayesian framework. The reference text is *Bayesian Data Analysis* by Gelman et al.
 
 This repo contains all the codes to:
 
@@ -23,7 +23,7 @@ $$
 $$
 
 
-3.  evaluate and compare those models with Information Criteria: AIC, DIC, WAIC, LOO-CV
+3.  evaluate and compare those models with Information Criteria
 
 $$
   \text{AIC,} \ \ \ 
