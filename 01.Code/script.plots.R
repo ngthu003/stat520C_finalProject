@@ -13,7 +13,7 @@
 # ============================================================================!
 # 0) Libraries ----------------------------------------------------------------
 # ----------------------------------------------------------------------------!
-libs <- c('tidyverse', 'ggplot2', 'ggpubr')
+libs <- c('tidyverse', 'ggplot2', 'ggpubr', 'xtable')
 lapply(libs, require, character.only = TRUE)
 rm(libs)
 
@@ -76,6 +76,8 @@ log.Pred.Dens.df
 # 7             X1 + X2 50 -73.78118 -75.32513
 # 8                  X1 50 -73.80129 -74.81267
 
+print(xtable(log.Pred.Dens.df))
+
 
 
 ## 2.2) Histograms ------------------------------
@@ -103,11 +105,11 @@ fn.hist <- function(log.Pred.Dens, title.text) {
 
 fn.hist.Grid <- function(sim.n) {
   p.list <- list(
-    p1 = fn.hist(sim.n$results.log.Pred.Dens$log.Pred.Dens.1, expression('Model: Intercept +' ~ X[1] ~ '+' ~ X[2])),
-    p2 = fn.hist(sim.n$results.log.Pred.Dens$log.Pred.Dens.2, expression('Model: Intercept +' ~ X[1])),
+    p1 = fn.hist(sim.n$results.log.Pred.Dens$log.Pred.Dens.1, expression('Model 1: Intercept +' ~ X[1] ~ '+' ~ X[2])),
+    p2 = fn.hist(sim.n$results.log.Pred.Dens$log.Pred.Dens.2, expression('Model 2: Intercept +' ~ X[1])),
     p11 = NULL, p12 = NULL,
-    p3 = fn.hist(sim.n$results.log.Pred.Dens$log.Pred.Dens.3, expression('Model:'             ~ X[1] ~ '+' ~ X[2])),
-    p4 = fn.hist(sim.n$results.log.Pred.Dens$log.Pred.Dens.4, expression('Model:' ~ X[1]))
+    p3 = fn.hist(sim.n$results.log.Pred.Dens$log.Pred.Dens.3, expression('Model 3:'             ~ X[1] ~ '+' ~ X[2])),
+    p4 = fn.hist(sim.n$results.log.Pred.Dens$log.Pred.Dens.4, expression('Model 4:' ~ X[1]))
   )
   p <- ggarrange(plotlist = p.list, ncol = 2, nrow = 3,
                  heights = c(1, 0.1, 1),
@@ -157,7 +159,7 @@ fn.plot.Info.Criteria <- function(results.df, ymin, ymax) {
     scale_fill_brewer(palette = "Set2",
                       direction = -1,
                       name = 'Model Choices',
-                      labels = c('Intercept + X1 + X2', 'Intercept + X1', 'X1 + X2', 'X1')) +
+                      labels = c('(M1) Intercept + X1 + X2', '(M2) Intercept + X1', '(M3) X1 + X2', '(M4) X1')) +
     theme(plot.background    = element_rect(fill = 'white'),
           panel.background   = element_rect(fill = 'white'),
           panel.grid.major   = element_line(linetype = 'dashed',
